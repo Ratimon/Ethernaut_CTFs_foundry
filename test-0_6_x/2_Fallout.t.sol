@@ -29,10 +29,7 @@ contract FalloutTest is Test, DeployFalloutScript {
         vm.startPrank(attacker);
 
         falloutChallenge.Fal1out{value: 0.0005 ether}();
-        // (bool success, ) = address(fallbackChallenge).call{value: 1 wei}("");
-        // fallbackChallenge.withdraw();
 
-        // assertEq(success, true);
         assertEq( falloutChallenge.owner(), attacker);
        
         vm.stopPrank(  );
