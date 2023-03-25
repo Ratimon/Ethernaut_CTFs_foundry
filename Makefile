@@ -18,6 +18,9 @@ anvil-node:
 1-unit:
 	forge test --match-path test/1_Fallback.t.sol -vvv
 
+2-unit:
+	forge test --match-path test-0_6_x/2_Fallout.t.sol -vvv
+
 define local_network
 http://127.0.0.1:$1
 endef
