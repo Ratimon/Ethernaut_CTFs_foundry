@@ -6,3 +6,7 @@
 	path = lib-0_6_x/openzeppelin-contracts
 	url = https://github.com/openzeppelin/openzeppelin-contracts
 	branch = v3.4.2
+[submodule "lib/openzeppelin-0_6_x"]
+	path = lib/openzeppelin-0_6_x
+	url = https://github.com/openzeppelin/openzeppelin-contracts
+	branch = v3.4.2
