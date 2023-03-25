@@ -1,5 +1,7 @@
 [profile.default]
 src = 'src'
+test = 'test'
+script = 'script'
 out = 'out'
 libs = ['lib']
 solc_version = '0.8.19'
@@ -10,6 +12,8 @@ solc_version = '0.8.19'
 # `src` must be different fot it to work.
 # We also recommend putting all Solidity test files and scripts inside `src*/`.
 src = 'src-0_6_x'
+test = 'test-0_6_x'
+script = 'script-0_6_x'
 out = 'out'
 # The order matters! When using `forge install` with FOUNDRY_PROFILE=0_6_x,
 # it will use the first directory as the installation path.
