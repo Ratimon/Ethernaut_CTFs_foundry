@@ -26,6 +26,9 @@ anvil-node:
 4-deploy-telephone:
 	forge script DeployTelephoneScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+4-solve-telephone:
+	forge script SolveTelephoneScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
 4-unit:
 	forge test --match-path test/4_Telephone.t.sol -vvv
 	

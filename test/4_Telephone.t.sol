@@ -5,8 +5,6 @@ import {Test} from "@forge-std/Test.sol";
 
 import {DeployTelephoneScript} from "@script/4_DeployTelephone.s.sol";
 
-// import {DeployTelephoneScript} from "@script/4_TelephoneAttacker.s.sol";
-
 import {Telephone} from "@main/4_Telephone.sol";
 import {TelephoneAttacker} from "@main/4_TelephoneAttacker.sol";
 
