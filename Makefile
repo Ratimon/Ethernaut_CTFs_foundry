@@ -23,6 +23,10 @@ anvil-node:
 2-unit:
 	forge test --match-path test-0_6_x/2_Fallout.t.sol -vvv
 
+3-unit:
+	forge test --match-path test/3_CoinFlip.t.sol -vvv
+	
+
 4-deploy-telephone:
 	forge script DeployTelephoneScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
