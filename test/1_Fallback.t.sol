@@ -39,5 +39,4 @@ contract FallbackTest is Test, DeployFallbackScript {
     }
 
 
-
 }
