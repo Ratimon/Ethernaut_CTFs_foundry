@@ -2,10 +2,8 @@
 pragma solidity =0.8.19;
 
 import {Script} from "@forge-std/Script.sol";
-
 import {Telephone} from "@main/4_Telephone.sol";
 import {TelephoneAttacker} from "@main/4_TelephoneAttacker.sol";
-
 
 contract SolveTelephoneScript is Script {
 

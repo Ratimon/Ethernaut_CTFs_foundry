@@ -2,6 +2,9 @@
 anvil-node:
 	anvil --chain-id 1337
 
+anvil-node-auto:
+	anvil --chain-id 1337 --block-time 5
+
 1-deploy-fallback:
 	forge script DeployFallbackScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
@@ -22,6 +25,12 @@ anvil-node:
 
 2-unit:
 	forge test --match-path test-0_6_x/2_Fallout.t.sol -vvv
+
+3-deploy-coinflip:
+	forge script DeployCoinFlipScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
+3-solve-coinflip:
+	forge script SolveCoinFlipScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
 3-unit:
 	forge test --match-path test/3_CoinFlip.t.sol -vvv
