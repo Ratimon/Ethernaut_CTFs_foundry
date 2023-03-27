@@ -16,10 +16,7 @@ contract FallbackTest is Test, DeployFallbackScript {
 
     function setUp() public {
 
-        vm.deal(deployer, 1 ether);
         vm.deal(attacker, 1 ether);
-
-        vm.label(deployer, "Deployer");
         vm.label(attacker, "Attacker");
 
         DeployFallbackScript.run();

@@ -9,19 +9,13 @@ import {ElevatorAttacker} from "@main/11_ElevatorAttacker.sol";
 
 contract ElevatorTest is Test, DeployElevatorScript {
 
-    address public deployer;
     address public attacker = address(11);
 
     ElevatorAttacker elevatorAttacker;
 
     function setUp() public {
 
-        deployer = msg.sender;
-
-        vm.deal(deployer, 1 ether);
         vm.deal(attacker, 1 ether);
-
-        vm.label(deployer, "Deployer");
         vm.label(attacker, "Attacker");
 
         DeployElevatorScript.run();
