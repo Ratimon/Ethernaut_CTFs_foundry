@@ -35,7 +35,6 @@ anvil-node-auto:
 3-unit:
 	forge test --match-path test/3_CoinFlip.t.sol -vvv
 	
-
 4-deploy-telephone:
 	forge script DeployTelephoneScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
@@ -45,12 +44,22 @@ anvil-node-auto:
 4-unit:
 	forge test --match-path test/4_Telephone.t.sol -vvv
 
+11-deploy-elevator:
+	forge script DeployElevatorScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
+11-solve-elevator:
+	forge script SolveElevatorScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
 11-unit:
 	forge test --match-path test/11_Elevator.t.sol -vvv
 	
 cast-owner:
 	cast call 0x8464135c8f25da09e49bc8782676a84730c318bc \
   	"owner()(address)" \
+
+cast-top:
+	cast call 0x8464135c8f25da09e49bc8782676a84730c318bc \
+  	"top()(bool)" \
 
 define local_network
 http://127.0.0.1:$1
