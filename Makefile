@@ -55,6 +55,9 @@ anvil-node-auto:
 
 21-deploy-shop:
 	forge script DeployShopScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
+21-unit:
+	forge test --match-path test/21_Shop.t.sol -vvv
 	
 cast-owner:
 	cast call 0x8464135c8f25da09e49bc8782676a84730c318bc \

@@ -3,13 +3,11 @@ pragma solidity =0.8.19;
 
 import {Test} from "@forge-std/Test.sol";
 import {DeployElevatorScript} from "@script/11_DeployElevator.s.sol";
-// import {DeployElevatorAttackerScript} from "@script/11_DeployElevatorAttacker.s.sol";
 
 import {Elevator} from "@main/11_Elevator.sol";
 import {ElevatorAttacker} from "@main/11_ElevatorAttacker.sol";
 
-
-contract FallbackTest is Test, DeployElevatorScript {
+contract ElevatorTest is Test, DeployElevatorScript {
 
     address public deployer;
     address public attacker = address(11);
