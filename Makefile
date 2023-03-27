@@ -24,7 +24,7 @@ anvil-node-auto:
 	FOUNDRY_PROFILE=0_6_x forge script SolveFalloutScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
 2-unit:
-	forge test --match-path test-0_6_x/2_Fallout.t.sol -vvv
+	FOUNDRY_PROFILE=0_6_x  forge test --match-path test-0_6_x/2_Fallout.t.sol -vvv
 
 3-deploy-coinflip:
 	forge script DeployCoinFlipScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
