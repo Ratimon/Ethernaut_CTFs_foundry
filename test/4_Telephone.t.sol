@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.16;
+pragma solidity =0.8.19;
 
 import {Test} from "@forge-std/Test.sol";
-
 import {DeployTelephoneScript} from "@script/4_DeployTelephone.s.sol";
 
 import {Telephone} from "@main/4_Telephone.sol";
@@ -38,7 +37,5 @@ contract FallbackTest is Test, DeployTelephoneScript {
        
         vm.stopPrank(  );
     }
-
-
 
 }

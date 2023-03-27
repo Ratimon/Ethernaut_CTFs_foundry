@@ -44,6 +44,9 @@ anvil-node-auto:
 
 4-unit:
 	forge test --match-path test/4_Telephone.t.sol -vvv
+
+11-unit:
+	forge test --match-path test/11_Elevator.t.sol -vvv
 	
 cast-owner:
 	cast call 0x8464135c8f25da09e49bc8782676a84730c318bc \
