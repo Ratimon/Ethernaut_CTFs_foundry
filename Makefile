@@ -52,6 +52,9 @@ anvil-node-auto:
 
 11-unit:
 	forge test --match-path test/11_Elevator.t.sol -vvv
+
+21-deploy-shop:
+	forge script DeployShopScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 	
 cast-owner:
 	cast call 0x8464135c8f25da09e49bc8782676a84730c318bc \
