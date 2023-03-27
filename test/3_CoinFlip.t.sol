@@ -8,14 +8,15 @@ import {CoinFlip} from "@main/3_CoinFlip.sol";
 
 contract CoinFlipTest is Test, DeployCoinFlipScript {
 
-    address public deployer;
+    string mnemonic ="test test test test test test test test test test test junk";
+    uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+
+    address deployer = vm.addr(deployerPrivateKey);
     address public attacker = address(11);
 
     uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
 
     function setUp() public {
-
-        deployer = msg.sender;
 
         vm.deal(deployer, 1 ether);
         vm.deal(attacker, 10 ether);
@@ -29,6 +30,7 @@ contract CoinFlipTest is Test, DeployCoinFlipScript {
     function test_isSolved() public {
         vm.startPrank(attacker);
 
+        assertEq( coinflipChallenge.consecutiveWins(), 0);
         while (coinflipChallenge.consecutiveWins()< 10) {
 
             uint256 blockValue = uint256(blockhash(block.number - 1));
@@ -41,21 +43,11 @@ contract CoinFlipTest is Test, DeployCoinFlipScript {
                 coinflipChallenge.flip(false);
             }
 
-
-            // try coinflipChallenge.flip(side) returns (bool isFlip) {
-            //     // vm.roll(block.number + 1);
-            // } catch {
-            //     coinflipChallenge.flip(!side);
-            //     // vm.roll(block.number + 1);
-
-            // }
-
-            // coinflipChallenge.flip(side);
             vm.roll(block.number + 1);
-
         }
 
         assertEq( coinflipChallenge.consecutiveWins(), 10);
+        
         vm.stopPrank( );
     }
 

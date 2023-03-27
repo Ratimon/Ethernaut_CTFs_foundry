@@ -32,9 +32,9 @@ contract FallbackTest is Test, DeployElevatorScript {
     function test_isSolved() public {
         vm.startPrank(attacker);
 
+        assertEq( elevatorChallenge.top(), false);
         elevatorAttacker = new ElevatorAttacker(address(elevatorChallenge));
         elevatorAttacker.attack(10);
-
         assertEq( elevatorChallenge.top(), true);
        
         vm.stopPrank(  );
