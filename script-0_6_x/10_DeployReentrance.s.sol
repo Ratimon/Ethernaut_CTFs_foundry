@@ -3,10 +3,10 @@ pragma solidity ^0.6.0;
 pragma experimental ABIEncoderV2;
 
 import {Script} from "@forge-std/Script.sol";
-import {Fallout} from "@main-0_6_x/2_Fallout.sol";
+import {Reentrance} from "@main-0_6_x/10_Reentrance.sol";
 
-contract DeployFalloutScript is Script {
-    Fallout falloutChallenge;
+contract DeployReentranceScript is Script {
+    Reentrance reentranceChallenge;
 
     function run() public {
         // uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
@@ -18,7 +18,7 @@ contract DeployFalloutScript is Script {
 
         vm.startBroadcast(deployerPrivateKey);
 
-        falloutChallenge = new Fallout();
+        reentranceChallenge = new Reentrance();
 
         vm.stopBroadcast();
     }
