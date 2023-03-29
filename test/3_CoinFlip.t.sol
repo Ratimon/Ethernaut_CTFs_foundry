@@ -8,10 +8,6 @@ import {CoinFlip} from "@main/3_CoinFlip.sol";
 
 contract CoinFlipTest is Test, DeployCoinFlipScript {
 
-    string mnemonic ="test test test test test test test test test test test junk";
-    uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
-
-    address deployer = vm.addr(deployerPrivateKey);
     address public attacker = address(11);
 
     uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;

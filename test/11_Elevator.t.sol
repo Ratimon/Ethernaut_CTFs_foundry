@@ -10,7 +10,6 @@ import {ElevatorAttacker} from "@main/11_ElevatorAttacker.sol";
 contract ElevatorTest is Test, DeployElevatorScript {
 
     address public attacker = address(11);
-
     ElevatorAttacker elevatorAttacker;
 
     function setUp() public {
