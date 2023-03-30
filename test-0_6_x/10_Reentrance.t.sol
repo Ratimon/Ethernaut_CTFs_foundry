@@ -38,17 +38,11 @@ contract ReentranceTest is Test, DeployReentranceScript {
         assertEq( address(reentranceChallenge).balance, 0);
         assertGt( address(reentranceAttacker).balance, 10 ether);
 
-        // console.log(reentranceAttacker.balanceOf())
-
-        console.log('address(reentranceAttacker).balance');
-        console.log(address(reentranceAttacker).balance);
-
-
         reentranceAttacker.withdrawETH( payable(attacker),  address(reentranceAttacker).balance);
         assertGt( address(attacker).balance, 10 ether);
 
-        console.log('address(reentranceAttacker).balance');
-        console.log(address(reentranceAttacker).balance);
+        // console.log('address(reentranceAttacker).balance');
+        // console.log(address(reentranceAttacker).balance);
 
         vm.stopPrank(  );
     }

