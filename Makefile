@@ -44,6 +44,9 @@ anvil-node-auto:
 4-unit:
 	forge test --match-path test/4_Telephone.t.sol -vvv
 
+4-deploy-force:
+	forge script DeployForceScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
 10-deploy-reentrance:
 	FOUNDRY_PROFILE=0_6_x forge script DeployReentranceScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
