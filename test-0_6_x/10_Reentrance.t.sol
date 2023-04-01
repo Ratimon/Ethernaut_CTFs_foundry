@@ -32,9 +32,6 @@ contract ReentranceTest is Test, DeployReentranceScript {
     function test_isSolved() public {
         vm.startPrank(attacker);
 
-        // console.log('address(attacker).balance');
-        // console.log(address(attacker).balance);
-
         assertEq( address(reentranceChallenge).balance, 10 ether);
 
         reentranceAttacker = new ReentranceAttacker(address(reentranceChallenge));
@@ -42,9 +39,6 @@ contract ReentranceTest is Test, DeployReentranceScript {
 
         assertEq( address(reentranceChallenge).balance, 0 ether);
         assertEq( address(reentranceAttacker).balance, 10.2 ether);
-
-        // console.log('address(attacker).balance');
-        // console.log(address(attacker).balance);
 
         reentranceAttacker.withdrawETH( payable(attacker),  address(reentranceAttacker).balance);
         assertEq( address(attacker).balance, 10.2 ether);
