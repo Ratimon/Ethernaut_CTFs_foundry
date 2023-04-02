@@ -47,6 +47,9 @@ anvil-node-auto:
 7-deploy-force:
 	forge script DeployForceScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+7-solve-force:
+	forge script SolveForceScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
 7-unit:
 	forge test --match-path test/7_Force.t.sol -vvv
 
