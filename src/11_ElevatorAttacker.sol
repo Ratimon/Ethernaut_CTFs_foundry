@@ -11,7 +11,7 @@ interface IElevator {
 contract ElevatorAttacker is Building {
     IElevator elevator;
     bool firstCalled;
-    constructor(address _elevator) public {
+    constructor(address _elevator) {
         elevator = IElevator(_elevator);
         firstCalled = false;
     }
