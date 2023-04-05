@@ -3,7 +3,6 @@ pragma solidity =0.8.19;
 
 import {Script} from "@forge-std/Script.sol";
 import {NaughtCoin} from "@main/15_NaughtCoin.sol";
-// import {ElevatorAttacker} from "@main/11_ElevatorAttacker.sol";
 
 contract DeployNaughtCoinScript is Script {
     NaughtCoin naughtcoinChallenge;

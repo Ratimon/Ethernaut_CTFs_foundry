@@ -74,8 +74,11 @@ anvil-node-auto:
 11-unit:
 	forge test --match-path test/11_Elevator.t.sol -vvv
 
-11-deploy-naughtcoin:
+15-deploy-naughtcoin:
 	forge script DeployNaughtCoinScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
+15-unit:
+	forge test --match-path test/15_NaughtCoin.t.sol -vvv
 
 21-deploy-shop:
 	forge script DeployShopScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
