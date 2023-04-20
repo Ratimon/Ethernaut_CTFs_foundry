@@ -86,6 +86,9 @@ anvil-node-auto:
 15-unit:
 	forge test --match-path test/15_NaughtCoin.t.sol -vvv
 
+20-deploy-denial:
+	forge script DeployDenialScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
 21-deploy-shop:
 	forge script DeployShopScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
