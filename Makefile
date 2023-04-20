@@ -50,8 +50,11 @@ anvil-node-auto:
 7-unit:
 	forge test --match-path test/7_Force.t.sol -vvv
 
-7-deploy-king:
+9-deploy-king:
 	forge script DeployKingScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
+9-unit:
+	forge test --match-path test/9_King.t.sol -vvv
 
 10-deploy-reentrance:
 	FOUNDRY_PROFILE=0_6_x forge script DeployReentranceScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \

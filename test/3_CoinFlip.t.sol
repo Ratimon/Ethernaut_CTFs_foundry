@@ -14,8 +14,8 @@ contract CoinFlipTest is Test, DeployCoinFlipScript {
 
     function setUp() public {
 
-        vm.deal(attacker, 10 ether);
         vm.label(attacker, "Attacker");
+        vm.deal(attacker, 10 ether);
 
         DeployCoinFlipScript.run();
     }

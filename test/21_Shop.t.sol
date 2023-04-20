@@ -15,10 +15,9 @@ contract ShopTest is Test, DeployShopScript {
     ShopAttacker shopAttacker;
 
     function setUp() public {
-
-        vm.deal(attacker, 1 ether);
         vm.label(attacker, "Attacker");
-
+        vm.deal(attacker, 1 ether);
+       
         DeployShopScript.run();
     }
 

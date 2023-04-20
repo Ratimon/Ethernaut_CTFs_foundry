@@ -13,10 +13,9 @@ contract ElevatorTest is Test, DeployElevatorScript {
     ElevatorAttacker elevatorAttacker;
 
     function setUp() public {
-
-        vm.deal(attacker, 1 ether);
         vm.label(attacker, "Attacker");
-
+        vm.deal(attacker, 1 ether);
+        
         DeployElevatorScript.run();
     }
 

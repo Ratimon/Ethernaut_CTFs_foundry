@@ -21,9 +21,9 @@ contract NaughtCoinTest is Test, DeployNaughtCoinScript {
     NaughtCoinAttacker naughtCoinAttacker;
 
     function setUp() public {
-
-        vm.deal(attacker, 1 ether);
         vm.label(attacker, "Attacker");
+        vm.deal(attacker, 1 ether);
+        
 
         DeployNaughtCoinScript.run();
     }

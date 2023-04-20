@@ -19,8 +19,8 @@ contract ForceTest is Test, DeployForceScript {
 
     function setUp() public {
 
-        vm.deal(attacker, 2 ether);
         vm.label(attacker, "Attacker");
+        vm.deal(attacker, 2 ether);
 
         DeployForceScript.run();
     }
