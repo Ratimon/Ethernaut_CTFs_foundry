@@ -89,6 +89,10 @@ anvil-node-auto:
 20-deploy-denial:
 	forge script DeployDenialScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+#  --block-gas-limit 1000000 
+20-unit:
+	forge test --gas-report  --match-path test/20_Denial.t.sol -vvv
+
 21-deploy-shop:
 	forge script DeployShopScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 

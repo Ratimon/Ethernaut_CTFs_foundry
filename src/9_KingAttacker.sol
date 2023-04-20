@@ -14,7 +14,6 @@ contract KingAttacker {
     }
 
     receive() external payable {
-
         revert();
     }
 
