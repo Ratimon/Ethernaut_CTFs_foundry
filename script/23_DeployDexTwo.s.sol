@@ -24,15 +24,15 @@ contract DeployDexTwoScript is Script {
         tokenOne = new SwappableTokenTwo(address(dextwoChallenge), "Token 1", "TKN1", 110);
         tokenTwo = new SwappableTokenTwo(address(dextwoChallenge), "Token 2", "TKN2", 110);
 
-        dextwoChallenge.setTokens(address(tokenOne), address(tokenTwo));
-        tokenOne.approve(address(dextwoChallenge), 100);
-        tokenTwo.approve(address(dextwoChallenge), 100);
+        // dextwoChallenge.setTokens(address(tokenOne), address(tokenTwo));
+        // tokenOne.approve(address(dextwoChallenge), 100);
+        // tokenTwo.approve(address(dextwoChallenge), 100);
 
-        dextwoChallenge.add_liquidity(address(tokenOne), 100);
-        dextwoChallenge.add_liquidity(address(tokenTwo), 100);
+        // dextwoChallenge.add_liquidity(address(tokenOne), 100);
+        // dextwoChallenge.add_liquidity(address(tokenTwo), 100);
 
-        // tokenOne.transfer(_player, 100);
-        // tokenTwo.transfer(_player, 100);
+        // tokenOne.transfer(_player, 10);
+        // tokenTwo.transfer(_player, 10);
 
 
         vm.stopBroadcast();

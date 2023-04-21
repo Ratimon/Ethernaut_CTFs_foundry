@@ -105,6 +105,9 @@ anvil-node-auto:
 23-deploy-dextwo:
 	forge script DeployDexTwoScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+23-unit:
+	forge test --match-path test/23_Dextwo.t.sol -vvv
+
 cast-pretty:
 	cast cast pretty-calldata \
 
