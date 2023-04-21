@@ -18,8 +18,8 @@ contract DeployDenialScript is Script {
         vm.startBroadcast(deployerPrivateKey);
 
         denialChallenge = new Denial();
-        address(denialChallenge).call{value : 1 ether}("");
-
+        (bool success, ) = address(denialChallenge).call{value : 1 ether}("");
+        require(success);
         vm.stopBroadcast();
     }
 }

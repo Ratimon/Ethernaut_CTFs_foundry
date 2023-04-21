@@ -102,6 +102,9 @@ anvil-node-auto:
 21-unit:
 	forge test --match-path test/21_Shop.t.sol -vvv
 
+23-deploy-dextwo:
+	forge script DeployDexTwoScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
 cast-pretty:
 	cast cast pretty-calldata \
 
