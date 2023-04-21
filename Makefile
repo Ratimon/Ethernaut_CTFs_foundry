@@ -89,6 +89,9 @@ anvil-node-auto:
 17-deploy-recovery:
 	forge script DeployRecoveryScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+17-unit:
+	forge test --match-path test/17_Recovery.t.sol -vvv
+
 20-deploy-denial:
 	forge script DeployDenialScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 

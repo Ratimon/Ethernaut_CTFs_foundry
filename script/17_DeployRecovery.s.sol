@@ -20,6 +20,13 @@ contract DeployRecoveryScript is Script {
         recoveryChallenge = new Recovery();
         recoveryChallenge.generateToken("InitialToken", uint256(100000));
 
+        address payable tokenAddress = payable(address(
+            uint160(uint256(keccak256(abi.encodePacked(bytes1(0xd6), bytes1(0x94), address(recoveryChallenge), bytes1(0x01)))))
+        ));
+
+        (bool success, ) = address(tokenAddress).call{value : 0.001  ether}("");
+        require(success);
+
         vm.stopBroadcast();
     }
 }
