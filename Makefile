@@ -86,6 +86,9 @@ anvil-node-auto:
 11-unit:
 	forge test --match-path test/11_Elevator.t.sol -vvv
 
+13-deploy-gatekeeperone:
+	forge script DeployGatekeeperOneScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
 15-deploy-naughtcoin:
 	forge script DeployNaughtCoinScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
