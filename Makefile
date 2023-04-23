@@ -53,6 +53,9 @@ anvil-node-auto:
 8-deploy-vault:
 	forge script DeployVaultScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+8-unit:
+	forge test --match-path test/8_Vault.t.sol -vvv
+
 9-deploy-king:
 	forge script DeployKingScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
