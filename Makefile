@@ -89,6 +89,9 @@ anvil-node-auto:
 13-deploy-gatekeeperone:
 	forge script DeployGatekeeperOneScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+13-unit:
+	forge test --match-path test/13_GatekeeperOne.t.sol -vvv
+
 15-deploy-naughtcoin:
 	forge script DeployNaughtCoinScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
