@@ -28,8 +28,10 @@ contract Recovery is Test, DeployRecoveryScript {
     function test_isSolved() public {
         vm.startPrank(attacker);
 
-        // nounce 1
         // sha3(rlp.encode([normalize_address(sender), nonce]))
+
+        // RLP for 20 byte address will be 0xd6, 0x94
+        // RLP for nounce of 1 will be 0x1
         address payable lostContract = payable(address(
             uint160(uint256(keccak256(abi.encodePacked(bytes1(0xd6), bytes1(0x94), address(recoveryChallenge), bytes1(0x01)))))
         ));
