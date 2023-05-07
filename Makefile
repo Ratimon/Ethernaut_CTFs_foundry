@@ -89,6 +89,9 @@ anvil-node-auto:
 12_DeployPrivacy:
 	forge script DeployPrivacyScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+12-unit:
+	forge test --match-path test/12_Privacy.t.sol -vvv
+
 13-deploy-gatekeeperone:
 	forge script DeployGatekeeperOneScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
