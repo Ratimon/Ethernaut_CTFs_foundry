@@ -113,6 +113,9 @@ anvil-node-auto:
 18-deploy-magicnumber:
 	forge script DeployMagicNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+18-unit:
+	forge test --match-path test/18_MagicNumber.t.sol -vvv
+
 20-deploy-denial:
 	forge script DeployDenialScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
