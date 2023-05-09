@@ -22,3 +22,12 @@ out = 'out'
 libs = ['lib-0_6_x', 'lib']
 optimizer = true
 solc_version = '0.6.12'
+
+[profile.0_5_x]
+src = 'src-0_5_x'
+test = 'test-0_5_x'
+script = 'script-0_5_x'
+out = 'out'
+libs = ['lib-0_5_x', 'lib']
+optimizer = true
+solc_version = '0.5.6'
