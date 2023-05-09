@@ -28,14 +28,14 @@ contract MagicNumberTest is Test, DeployMagicNumberScript {
         // Runtime code
 
         // [00] PUSH1   2a --> 0x602A
-        // [02] PUSH1   80 --> 0x6080
-        // [04] MSTORE  52 --> 0x52 (Store value p=0x2a at position v=0x80 in memory)
+        // [02] PUSH1   00 --> 0x6000
+        // [04] MSTORE  52 --> 0x52 (Store value p=0x2a at position v=0x00 in memory)
 
         // [05] PUSH1   20 --> 0x6020 (32 bytes)
-        // [07] PUSH1   80 --> 0x6080 (Value was stored in slot 0x80)
-        // [05] RETURN  F3 --> 0xF3 (Return value at p=0x80 slot and of size s=0x20)
+        // [07] PUSH1   00 --> 0x6000 (Value was stored in slot 0x80)
+        // [05] RETURN  F3 --> 0xF3 (Return value at p=0x00 slot and of size s=0x20)
 
-        // => 602A60805260206080F3
+        // => 602A60005260206000F3
 
         // Init code
 
@@ -57,13 +57,15 @@ contract MagicNumberTest is Test, DeployMagicNumberScript {
 
         // Init code + Runtime code
 
-        // 600a600C600039600A6000F3 + 602A60805260206080F3
-        // => 600a600C600039600A6000F3602A60805260206080F3
+        // 600a600C600039600A6000F3 + 602A60005260206000F3
+        // => 600a600C600039600A6000F3602A60005260206000F3
 
 
         address deployedContractAddress;
         // bytes memory code = hex"69602A60005260206000F3600052600A6016F3";
-        bytes memory code = hex"600a600C600039600A6000F3602A60805260206080F3";
+        // bytes memory code = hex"600a600C600039600A6000F3602A60805260206080F3";
+
+        bytes memory code = hex"600a600C600039600A6000F3602A60005260206000F3";
 
         assembly {
             deployedContractAddress := create(0, add(code, 0x20), mload(code))
