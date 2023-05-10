@@ -39,6 +39,7 @@ contract Recovery is Test, DeployRecoveryScript {
         assertEq(lostContract.balance, 0.001 ether);
         SimpleToken(lostContract).destroy(payable(attacker));
         assertEq( lostContract.balance, 0 ether);
+        assertEq( attacker.balance, 0.001 ether);
        
         vm.stopPrank(  );
     }

@@ -3,6 +3,7 @@
 Compile the non-default versions first:
 ```
 FOUNDRY_PROFILE=0_6_x forge build
+FOUNDRY_PROFILE=0_5_x forge build
 ```
 Compile the default version last:
 ```
