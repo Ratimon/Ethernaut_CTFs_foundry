@@ -119,6 +119,9 @@ anvil-node-auto:
 # 19-deploy-aliencodex:
 # 	FOUNDRY_PROFILE=0_5_x forge script DeployAlienCodexScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+19-unit:
+	forge test --match-path test/19_AlienCodex.t.sol -vvv
+
 20-deploy-denial:
 	forge script DeployDenialScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
