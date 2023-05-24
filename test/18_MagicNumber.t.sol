@@ -29,11 +29,11 @@ contract MagicNumberTest is Test, DeployMagicNumberScript {
 
         // [00] PUSH1   2a --> 0x602A
         // [02] PUSH1   00 --> 0x6000
-        // [04] MSTORE  52 --> 0x52 (Store value p=0x2a at position v=0x00 in memory)
+        // [04] MSTORE     --> 0x52 (Store value p=0x2a at position v=0x00 in memory)
 
         // [05] PUSH1   20 --> 0x6020 (32 bytes)
         // [07] PUSH1   00 --> 0x6000 (Value was stored in slot 0x80)
-        // [05] RETURN  F3 --> 0xF3 (Return value at p=0x00 slot and of size s=0x20)
+        // [09] RETURN     --> 0xF3 (Return value at p=0x00 slot and of size s=0x20)
 
         // => 602A60005260206000F3
 
@@ -42,15 +42,15 @@ contract MagicNumberTest is Test, DeployMagicNumberScript {
         // [00] PUSH1   0a --> 0x600A (10 bytes)
         // [02] PUSH1   ?? --> 0x60?? 
         // [04] PUSH1   00 --> 0x6000
-        // [06] CODECOPY   39 --> 0x39 (Calling the CODECOPY(t, f, s) 
+        // [06] CODECOPY   --> 0x39 (Calling the CODECOPY(t, f, s) 
 
         // - t: The destination offset where the code will be in memory
         // - f: This is the current position of the runtime opcode
         // - s: the size of the runtime code in bytes
 
-        // [07] PUSH1   20 --> 0x600A (10 bytes)
+        // [07] PUSH1   0A --> 0x600A (10 bytes)
         // [09] PUSH1   00 --> 0x6000 (Value was stored in slot 0x00)
-        // [10] RETURN  F3 --> 0xF3 (Return value at p=0x00 slot and of size s=0x0a)
+        // [11] RETURN     --> 0xF3 (Return value at p=0x00 slot and of size s=0x0a)
 
         // => 0x600A60??600039600A6000F3
         // => 0x600a600C600039600A6000F3 (// [02] PUSH1   12 --> 0x600c )
