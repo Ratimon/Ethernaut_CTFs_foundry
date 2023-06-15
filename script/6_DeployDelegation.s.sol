@@ -2,9 +2,9 @@
 pragma solidity =0.8.19;
 
 import {Script} from "@forge-std/Script.sol";
-import {Delegate, Delegation} from "@main/6_Delegate.sol";
+import {Delegate, Delegation} from "@main/6_Delegation.sol";
 
-contract DeployDelegateScript is Script {
+contract DeployDelegationScript is Script {
     Delegate  delegate;
     Delegation delegateChallenge;
 

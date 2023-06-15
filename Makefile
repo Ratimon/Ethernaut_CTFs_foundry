@@ -44,8 +44,8 @@ anvil-node-auto:
 7-deploy-force:
 	forge script DeployForceScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
-6-deploy-delegate:
-	forge script DeployDelegateScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+6-deploy-delegation:
+	forge script DeployDelegationScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
 7-solve-force:
 	forge script SolveForceScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
