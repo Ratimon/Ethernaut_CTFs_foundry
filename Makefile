@@ -41,11 +41,14 @@ anvil-node-auto:
 4-unit:
 	forge test --match-path test/4_Telephone.t.sol -vvv
 
-7-deploy-force:
-	forge script DeployForceScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
-
 6-deploy-delegation:
 	forge script DeployDelegationScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
+6-unit:
+	forge test --match-path test/6_Delegation.t.sol -vvv
+
+7-deploy-force:
+	forge script DeployForceScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
 7-solve-force:
 	forge script SolveForceScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \

@@ -7,7 +7,7 @@ import {DeployRecoveryScript} from "@script/17_DeployRecovery.s.sol";
 import {SimpleToken} from "@main/17_Recovery.sol";
 
 
-contract Recovery is Test, DeployRecoveryScript {
+contract RecoveryTest is Test, DeployRecoveryScript {
 
     string mnemonic ="test test test test test test test test test test test junk";
     uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
