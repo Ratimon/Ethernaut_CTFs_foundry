@@ -4,7 +4,7 @@ pragma solidity =0.8.19;
 import {Script} from "@forge-std/Script.sol";
 import {Preservation, LibraryContract} from "@main/16_Preservation.sol";
 
-contract DeploPreservationScript is Script {
+contract DeployPreservationScript is Script {
     address timeZone1LibraryAddress;
     address timeZone2LibraryAddress;
 

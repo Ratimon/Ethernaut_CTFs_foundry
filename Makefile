@@ -111,7 +111,10 @@ anvil-node-auto:
 	forge test --match-path test/15_NaughtCoin.t.sol -vvv
 
 16-deploy-preservation:
-	forge script DeploPreservationScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+	forge script DeployPreservationScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
+16-unit:
+	forge test --match-path test/16_Preservation.t.sol -vvv
 
 17-deploy-recovery:
 	forge script DeployRecoveryScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
