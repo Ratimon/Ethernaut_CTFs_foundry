@@ -8,5 +8,6 @@
 @test-0_6_x/=test-0_6_x/
 @forge-std/=lib/forge-std/src/
 @openzeppelin/=lib/openzeppelin-contracts/
+@openzeppelin-upgradable/=lib/openzeppelin-contracts-upgradeable/
 @openzeppelin-0_6_x/=lib/openzeppelin-0_6_x/
 @openzeppelin-0_5_x/=lib/openzeppelin-0_5_x/

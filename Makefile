@@ -156,6 +156,9 @@ anvil-node-auto:
 23-unit:
 	forge test --match-path test/23_Dextwo.t.sol -vvv
 
+24-deploy-puzzlewallet:
+	forge script DeployPuzzleWalletScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
 cast-pretty:
 	cast cast pretty-calldata \
 
