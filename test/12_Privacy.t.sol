@@ -7,18 +7,16 @@ import {DeployPrivacyScript} from "@script/12_DeployPrivacy.s.sol";
 import {Privacy} from "@main/12_Privacy.sol";
 
 contract PrivacyTest is Test, DeployPrivacyScript {
-
     address public attacker = address(11);
 
     function setUp() public {
         vm.label(attacker, "Attacker");
         vm.deal(attacker, 1 ether);
-        
+
         DeployPrivacyScript.run();
     }
 
     function test_isSolved() public {
-
         vm.startPrank(attacker);
         assertEq(privacyChallenge.locked(), true);
 
@@ -27,7 +25,6 @@ contract PrivacyTest is Test, DeployPrivacyScript {
         privacyChallenge.unlock(bytes16(secret));
 
         assertEq(privacyChallenge.locked(), false);
-        vm.stopPrank(  );
+        vm.stopPrank();
     }
 }
-

@@ -14,7 +14,6 @@ contract GatekeeperOneAttacker {
     }
 
     function attack(bytes8 gateKey) public {
-
         // for (uint256 i = 0; i <= 8191; i++) {
         //     try gatekeeperone.enter{gas: i + 800000}(gateKey) {
         //         console.log("passed with gas ->", 800000 + i);
@@ -23,5 +22,4 @@ contract GatekeeperOneAttacker {
         // }
         gatekeeperone.enter{gas: 802986}(gateKey);
     }
-
 }

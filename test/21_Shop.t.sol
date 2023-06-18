@@ -8,7 +8,6 @@ import {Shop} from "@main/21_Shop.sol";
 import {ShopAttacker} from "@main/21_ShopAttacker.sol";
 
 contract ShopTest is Test, DeployShopScript {
-
     address public deployer;
     address public attacker = address(11);
 
@@ -17,21 +16,20 @@ contract ShopTest is Test, DeployShopScript {
     function setUp() public {
         vm.label(attacker, "Attacker");
         vm.deal(attacker, 1 ether);
-       
+
         DeployShopScript.run();
     }
 
     function test_isSolved() public {
         vm.startPrank(attacker);
 
-        assertEq( shopChallenge.price(), 100);
+        assertEq(shopChallenge.price(), 100);
 
         shopAttacker = new ShopAttacker(address(shopChallenge));
         shopAttacker.attack();
 
-        assertEq( shopChallenge.price(), 10);
-       
-        vm.stopPrank(  );
-    }
+        assertEq(shopChallenge.price(), 10);
 
+        vm.stopPrank();
+    }
 }

@@ -6,10 +6,8 @@ import {DeployDelegationScript} from "@script/6_DeployDelegation.s.sol";
 
 import {Delegate, Delegation} from "@main/6_Delegation.sol";
 
-
 contract DelegationTest is Test, DeployDelegationScript {
-
-    string mnemonic ="test test test test test test test test test test test junk";
+    string mnemonic = "test test test test test test test test test test test junk";
     uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
 
     address deployer = vm.addr(deployerPrivateKey);
@@ -21,7 +19,7 @@ contract DelegationTest is Test, DeployDelegationScript {
         vm.label(attacker, "Attacker");
 
         vm.deal(deployer, 1 ether);
-        
+
         DeployDelegationScript.run();
     }
 
@@ -31,13 +29,12 @@ contract DelegationTest is Test, DeployDelegationScript {
         assertEq(delegateChallenge.owner(), deployer);
         assertEq(delegate.owner(), address(0));
 
-        (bool success, ) = address(delegateChallenge).call(abi.encodeWithSignature("pwn()"));
+        (bool success,) = address(delegateChallenge).call(abi.encodeWithSignature("pwn()"));
         require(success, "call not successful");
 
         assertEq(delegateChallenge.owner(), attacker);
         assertEq(delegate.owner(), address(0));
-       
-        vm.stopPrank(  );
-    }
 
+        vm.stopPrank();
+    }
 }

@@ -7,22 +7,20 @@ import {DeployMagicNumberScript} from "@script/18_MagicNumber.s.sol";
 import {MagicNum} from "@main/18_MagicNumber.sol";
 
 interface Solver {
-  function whatIsTheMeaningOfLife() external view returns (bytes32);
+    function whatIsTheMeaningOfLife() external view returns (bytes32);
 }
 
 contract MagicNumberTest is Test, DeployMagicNumberScript {
-
     address public attacker = address(11);
 
     function setUp() public {
         vm.label(attacker, "Attacker");
         vm.deal(attacker, 1 ether);
-        
+
         DeployMagicNumberScript.run();
     }
 
     function test_isSolved() public {
-
         vm.startPrank(attacker);
 
         // Runtime code
@@ -40,9 +38,9 @@ contract MagicNumberTest is Test, DeployMagicNumberScript {
         // Init code
 
         // [00] PUSH1   0a --> 0x600A (10 bytes)
-        // [02] PUSH1   ?? --> 0x60?? 
+        // [02] PUSH1   ?? --> 0x60??
         // [04] PUSH1   00 --> 0x6000
-        // [06] CODECOPY   --> 0x39 (Calling the CODECOPY(t, f, s) 
+        // [06] CODECOPY   --> 0x39 (Calling the CODECOPY(t, f, s)
 
         // - t: The destination offset where the code will be in memory
         // - f: This is the current position of the runtime opcode
@@ -60,7 +58,6 @@ contract MagicNumberTest is Test, DeployMagicNumberScript {
         // 600a600C600039600A6000F3 + 602A60005260206000F3
         // => 600a600C600039600A6000F3602A60005260206000F3
 
-
         address deployedContractAddress;
         // bytes memory code = hex"69602A60005260206000F3600052600A6016F3";
         // bytes memory code = hex"600a600C600039600A6000F3602A60805260206080F3";
@@ -73,10 +70,7 @@ contract MagicNumberTest is Test, DeployMagicNumberScript {
         magicnumberChallenge.setSolver(deployedContractAddress);
 
         Solver solver = Solver(deployedContractAddress);
-        assertEq(
-            solver.whatIsTheMeaningOfLife(),
-            0x000000000000000000000000000000000000000000000000000000000000002a
-        );
+        assertEq(solver.whatIsTheMeaningOfLife(), 0x000000000000000000000000000000000000000000000000000000000000002a);
 
         uint256 size;
         assembly {
@@ -84,7 +78,6 @@ contract MagicNumberTest is Test, DeployMagicNumberScript {
         }
         assertLe(size, 10, "Require the solver to have at most 10 opcodes.");
 
-        vm.stopPrank(  );
+        vm.stopPrank();
     }
 }
-

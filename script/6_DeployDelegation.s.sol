@@ -5,7 +5,7 @@ import {Script} from "@forge-std/Script.sol";
 import {Delegate, Delegation} from "@main/6_Delegation.sol";
 
 contract DeployDelegationScript is Script {
-    Delegate  delegate;
+    Delegate delegate;
     Delegation delegateChallenge;
 
     function run() public {
@@ -13,7 +13,7 @@ contract DeployDelegationScript is Script {
         // string memory mnemonic = vm.envString("MNEMONIC");
 
         // address is already funded with ETH
-        string memory mnemonic ="test test test test test test test test test test test junk";
+        string memory mnemonic = "test test test test test test test test test test test junk";
         uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
 
         vm.startBroadcast(deployerPrivateKey);

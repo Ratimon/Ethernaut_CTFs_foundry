@@ -12,7 +12,7 @@ contract DeployRecoveryScript is Script {
         // string memory mnemonic = vm.envString("MNEMONIC");
 
         // address is already funded with ETH
-        string memory mnemonic ="test test test test test test test test test test test junk";
+        string memory mnemonic = "test test test test test test test test test test test junk";
         uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
 
         vm.startBroadcast(deployerPrivateKey);
@@ -20,11 +20,19 @@ contract DeployRecoveryScript is Script {
         recoveryChallenge = new Recovery();
         recoveryChallenge.generateToken("InitialToken", uint256(100000));
 
-        address payable tokenAddress = payable(address(
-            uint160(uint256(keccak256(abi.encodePacked(bytes1(0xd6), bytes1(0x94), address(recoveryChallenge), bytes1(0x01)))))
-        ));
+        address payable tokenAddress = payable(
+            address(
+                uint160(
+                    uint256(
+                        keccak256(
+                            abi.encodePacked(bytes1(0xd6), bytes1(0x94), address(recoveryChallenge), bytes1(0x01))
+                        )
+                    )
+                )
+            )
+        );
 
-        (bool success, ) = address(tokenAddress).call{value : 0.001  ether}("");
+        (bool success,) = address(tokenAddress).call{value: 0.001 ether}("");
         require(success);
 
         vm.stopBroadcast();

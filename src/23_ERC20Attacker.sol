@@ -1,18 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import {ERC20} from  "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract TokenAttacker is ERC20 {
     address private _dex;
     address public player;
 
-    constructor(
-        address dex,
-        string memory name,
-        string memory symbol,
-        uint initialSupply
-    ) ERC20(name, symbol) {
+    constructor(address dex, string memory name, string memory symbol, uint256 initialSupply) ERC20(name, symbol) {
         _mint(msg.sender, initialSupply);
         _dex = dex;
         player = msg.sender;

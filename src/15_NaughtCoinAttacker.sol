@@ -15,9 +15,7 @@ contract NaughtCoinAttacker {
     }
 
     function attack() public {
-        require (msg.sender == owner, "caller must be be owner");
-        naughtCoin.transferFrom(msg.sender,  recipient,  naughtCoin.balanceOf(msg.sender));
+        require(msg.sender == owner, "caller must be be owner");
+        naughtCoin.transferFrom(msg.sender, recipient, naughtCoin.balanceOf(msg.sender));
     }
-
-
 }

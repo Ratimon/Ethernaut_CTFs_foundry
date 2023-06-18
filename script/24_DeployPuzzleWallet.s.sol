@@ -5,7 +5,6 @@ import {Script} from "@forge-std/Script.sol";
 import {PuzzleProxy, PuzzleWallet} from "@main/24_PuzzleWallet.sol";
 
 contract DeployPuzzleWalletScript is Script {
-
     // PuzzleWallet walletLogic;
     // PuzzleProxy proxy;
     PuzzleWallet walletChallenge;
@@ -15,7 +14,7 @@ contract DeployPuzzleWalletScript is Script {
         // string memory mnemonic = vm.envString("MNEMONIC");
 
         // address is already funded with ETH
-        string memory mnemonic ="test test test test test test test test test test test junk";
+        string memory mnemonic = "test test test test test test test test test test test junk";
         uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
         address deployer = vm.addr(deployerPrivateKey);
 

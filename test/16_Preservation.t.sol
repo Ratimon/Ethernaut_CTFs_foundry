@@ -7,10 +7,8 @@ import {DeployPreservationScript} from "@script/16_DeployPreservation.s.sol";
 import {Preservation} from "@main/16_Preservation.sol";
 import {PreservationAttacker} from "@main/16_PreservationAttacker.sol";
 
-
 contract PreservationTest is Test, DeployPreservationScript {
-
-    string mnemonic ="test test test test test test test test test test test junk";
+    string mnemonic = "test test test test test test test test test test test junk";
     uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
 
     address deployer = vm.addr(deployerPrivateKey);
@@ -24,7 +22,7 @@ contract PreservationTest is Test, DeployPreservationScript {
         vm.label(attacker, "Attacker");
 
         vm.deal(deployer, 1 ether);
-        
+
         DeployPreservationScript.run();
     }
 
@@ -32,14 +30,13 @@ contract PreservationTest is Test, DeployPreservationScript {
         vm.startPrank(attacker);
 
         assertEq(preservationChallenge.owner(), deployer);
- 
+
         preservationAttacker = new PreservationAttacker();
-        preservationChallenge.setFirstTime( uint256(uint160( address(preservationAttacker))));
-        preservationChallenge.setFirstTime( uint256(uint160(attacker)));
+        preservationChallenge.setFirstTime(uint256(uint160(address(preservationAttacker))));
+        preservationChallenge.setFirstTime(uint256(uint160(attacker)));
 
         assertEq(preservationChallenge.owner(), attacker);
-       
-        vm.stopPrank(  );
-    }
 
+        vm.stopPrank();
+    }
 }

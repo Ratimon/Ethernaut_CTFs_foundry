@@ -12,8 +12,7 @@ interface IDenial {
 }
 
 contract DenialTest is Test, DeployDenialScript {
-
-    string mnemonic ="test test test test test test test test test test test junk";
+    string mnemonic = "test test test test test test test test test test test junk";
     uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
     uint256 attackerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 2); //  address = 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
 
@@ -32,14 +31,14 @@ contract DenialTest is Test, DeployDenialScript {
         vm.deal(deployer, 1 ether);
         vm.deal(attacker, 2 ether);
         vm.deal(player, 3 ether);
-        
+
         DeployDenialScript.run();
     }
 
     function test_isSolved() public {
         vm.startPrank(attacker);
 
-        assertEq( address(IDenial(address(denialChallenge))).balance, 1 ether);
+        assertEq(address(IDenial(address(denialChallenge))).balance, 1 ether);
         denialAttacker = new DenialAttacker(payable(address(denialChallenge)));
         uint256 gas_start = gasleft();
         // vm.expectRevert();
@@ -48,8 +47,6 @@ contract DenialTest is Test, DeployDenialScript {
         emit log_named_uint("Gas Metering", gas_used);
         // assertEq( address(IDenial(address(denialChallenge))).balance, 0.99 ether);
 
-        vm.stopPrank(  );
-       
+        vm.stopPrank();
     }
-
 }

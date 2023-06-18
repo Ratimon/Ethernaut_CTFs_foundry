@@ -2,33 +2,30 @@
 pragma solidity =0.8.19;
 
 contract Delegate {
-
     address public owner;
-  
+
     constructor(address _owner) {
-      owner = _owner;
+        owner = _owner;
     }
-  
+
     function pwn() public {
-      owner = msg.sender;
+        owner = msg.sender;
     }
-  }
-  
-  contract Delegation {
-  
+}
+
+contract Delegation {
     address public owner;
     Delegate delegate;
-  
+
     constructor(address _delegateAddress) {
-      delegate = Delegate(_delegateAddress);
-      owner = msg.sender;
+        delegate = Delegate(_delegateAddress);
+        owner = msg.sender;
     }
-  
+
     fallback() external {
-      (bool result,) = address(delegate).delegatecall(msg.data);
-      if (result) {
-        this;
-      }
+        (bool result,) = address(delegate).delegatecall(msg.data);
+        if (result) {
+            this;
+        }
     }
-  }
-  
+}
