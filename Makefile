@@ -159,6 +159,9 @@ anvil-node-auto:
 24-deploy-puzzlewallet:
 	forge script DeployPuzzleWalletScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+24-unit:
+	forge test --match-path test/24_PuzzleWallet.t.sol -vvv
+
 cast-pretty:
 	cast cast pretty-calldata \
 
