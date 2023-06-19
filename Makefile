@@ -162,6 +162,9 @@ anvil-node-auto:
 24-unit:
 	forge test --match-path test/24_PuzzleWallet.t.sol -vvv
 
+25-deploy-motorbike:
+	FOUNDRY_PROFILE=0_6_x forge script DeployMotorbikeScript --rpc-url $(call local_network,8545)  -vvv --broadcast; \
+
 cast-pretty:
 	cast cast pretty-calldata \
 
