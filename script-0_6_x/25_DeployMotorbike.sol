@@ -6,7 +6,7 @@ import {Script} from "@forge-std/Script.sol";
 import {Engine, Motorbike} from "@main-0_6_x/25_Motorbike.sol";
 
 contract DeployMotorbikeScript is Script {
-    // Engine engine;
+    Engine engine;
     // Motorbike motorbikeProxy;
     Engine motorbikeChallenge;
 
@@ -20,7 +20,7 @@ contract DeployMotorbikeScript is Script {
 
         vm.startBroadcast(deployerPrivateKey);
 
-        Engine engine = new Engine();
+        engine = new Engine();
         Motorbike proxy = new Motorbike(address(engine));
         motorbikeChallenge = Engine(payable(address(proxy)));
 

