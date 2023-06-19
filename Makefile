@@ -165,6 +165,9 @@ anvil-node-auto:
 25-deploy-motorbike:
 	FOUNDRY_PROFILE=0_6_x forge script DeployMotorbikeScript --rpc-url $(call local_network,8545)  -vvv --broadcast; \
 
+25-unit:
+	FOUNDRY_PROFILE=0_6_x  forge test --match-path test-0_6_x/25_Motorbike.t.sol -vvv
+
 cast-pretty:
 	cast cast pretty-calldata \
 
