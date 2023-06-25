@@ -15,5 +15,7 @@ Install the dependency with specific version
 ```
 FOUNDRY_PROFILE=0_6_x forge install openzeppelin-0_6_x=openzeppelin/openzeppelin-contracts@v3.4.2
 ```
-
+```
+forge install openzeppelin/openzeppelin-contracts-upgradeable
+```
 ---

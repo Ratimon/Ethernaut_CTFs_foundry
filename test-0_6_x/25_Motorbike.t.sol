@@ -5,7 +5,7 @@ pragma experimental ABIEncoderV2;
 import {console, Test} from "@forge-std/Test.sol";
 
 import {DeployMotorbikeScript} from "@script-0_6_x/25_DeployMotorbike.sol";
-import {MotorbikeAttacker} from "@main-0_6_x/25_MotorbikeAttacker.sol";
+import {MotorbikeAttackerImp} from "@main-0_6_x/25_MotorbikeAttacker.sol";
 
 contract MotorbikeTest is Test, DeployMotorbikeScript {
 
@@ -15,7 +15,7 @@ contract MotorbikeTest is Test, DeployMotorbikeScript {
 
     address public attacker = address(11);
 
-    MotorbikeAttacker motorbikeAttacker;
+    MotorbikeAttackerImp motorbikeAttackerImp;
 
     function setUp() public {
 
@@ -30,13 +30,12 @@ contract MotorbikeTest is Test, DeployMotorbikeScript {
         vm.startPrank(attacker);
 
         engine.initialize();        
-        motorbikeAttacker = new MotorbikeAttacker();
+        motorbikeAttackerImp = new MotorbikeAttackerImp();
 
         bytes memory initEncoded = abi.encodeWithSignature("initialize()");
-        engine.upgradeToAndCall(address(motorbikeAttacker), initEncoded);
+        engine.upgradeToAndCall(address(motorbikeAttackerImp), initEncoded);
 
         assertEq(engine.upgrader(), address(attacker));
-
 
         vm.stopPrank(  );
     }

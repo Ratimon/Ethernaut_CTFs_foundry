@@ -4,7 +4,7 @@ pragma experimental ABIEncoderV2;
 
 import {Engine} from "@main-0_6_x/25_Motorbike.sol";
 
-contract MotorbikeAttacker {
+contract MotorbikeAttackerImp {
 
     function initialize() external {
         selfdestruct(payable(msg.sender));
